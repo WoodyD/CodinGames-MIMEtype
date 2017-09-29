@@ -28,13 +28,20 @@ namespace MIMEtype
 			{
 				string FNAME = Console.ReadLine(); // One file name per line.
 				Console.Error.WriteLine("FNAME: " + FNAME);
-				if (string.IsNullOrEmpty(FNAME))
+				if (FNAME.LastIndexOf('.') < 0)
 				{
 					answers.Add("UNKNOWN");
 					continue;
 				}
 
 				string toCompare = FNAME.Substring(FNAME.LastIndexOf('.') + 1).ToLower();
+				if (string.IsNullOrEmpty(toCompare))
+				{
+					answers.Add("UNKNOWN");
+					continue;
+
+				}
+
 				string toAnswers = "";
 				Console.Error.WriteLine("toCompare: " + toCompare);
 				foreach (var pair in pairs)
